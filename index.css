@@ -1276,20 +1276,28 @@ img {
   }
 
   .hero-cta-group {
-    justify-content: center;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .hero-cta-group .btn {
+    width: 100%;
   }
 
   .hero-stats-card {
     max-width: 100%;
-    flex-direction: row;
-    justify-content: space-around;
-    padding: 24px;
+    flex-direction: column;
+    gap: 20px;
+    padding: 28px 24px;
   }
 
   .divider-y {
-    width: 1px;
-    height: 40px;
-    margin: auto 0;
+    width: 40px;
+    height: 1px;
+    margin: 0 auto;
   }
 
   .stat-number {
