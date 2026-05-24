@@ -174,7 +174,7 @@ document.addEventListener('DOMContentLoaded', () => {
       
       // Web3Forms Setup - Delivers directly to istikbalturut@gmail.com
       // You can obtain your free Access Key in 5 seconds at: https://web3forms.com
-      const accessKey = "YOUR_ACCESS_KEY_HERE"; 
+      const accessKey = "408671ae-61ef-45d5-b9e4-863be36adef8"; 
       
       const formData = {
         access_key: accessKey,
