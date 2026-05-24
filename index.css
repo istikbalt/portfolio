@@ -2,19 +2,19 @@
    DESIGN SYSTEM & CSS CUSTOM PROPERTIES
    ========================================== */
 :root {
-  /* Color Tokens */
-  --bg-deep: #08070b;
-  --bg-surface: rgba(18, 16, 26, 0.6);
-  --bg-surface-hover: rgba(25, 22, 36, 0.85);
+  /* Color Tokens (Exquisite Warm Light Mode) */
+  --bg-deep: #f8f7f4; /* Premium Soft Ivory/Cream backing */
+  --bg-surface: rgba(255, 255, 255, 0.7); /* Translucent bright glass */
+  --bg-surface-hover: rgba(255, 255, 255, 0.95);
   
-  --color-primary: #6366f1; /* Indigo */
-  --color-primary-rgb: 99, 102, 241;
-  --color-accent: #c8a165; /* Antique Gold */
-  --color-accent-rgb: 200, 161, 101;
-  --color-text-main: #f3f4f6; /* Off-white */
-  --color-text-muted: #9ca3af; /* Muted Grey */
-  --color-border: rgba(255, 255, 255, 0.06);
-  --color-border-glow: rgba(99, 102, 241, 0.25);
+  --color-primary: #4f46e5; /* Rich clean Indigo */
+  --color-primary-rgb: 79, 70, 229;
+  --color-accent: #a1783f; /* Deep Antique Gold for premium contrast */
+  --color-accent-rgb: 161, 120, 63;
+  --color-text-main: #1f2937; /* Clean dark slate for maximum readability */
+  --color-text-muted: #4b5563; /* Soft elegant dark grey */
+  --color-border: rgba(0, 0, 0, 0.08); /* Delicate light borders */
+  --color-border-glow: rgba(79, 70, 229, 0.12);
   
   /* Fonts */
   --font-serif: 'Playfair Display', Georgia, serif;
@@ -96,7 +96,7 @@ img {
   -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--color-border);
   border-radius: 16px;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.05); /* Softer shadow for light mode */
   transition: var(--transition-smooth);
 }
 
@@ -115,7 +115,7 @@ img {
   left: 0;
   width: 100%;
   z-index: 1000;
-  background: rgba(8, 7, 11, 0.7);
+  background: rgba(248, 247, 244, 0.8); /* Cream-translucent for light mode */
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--color-border);
@@ -142,7 +142,7 @@ img {
   font-weight: 700;
   letter-spacing: 2px;
   color: var(--color-text-main);
-  background: linear-gradient(135deg, #fff 0%, var(--color-accent) 100%);
+  background: linear-gradient(135deg, var(--color-text-main) 0%, var(--color-accent) 100%); /* Adaptive gradient */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -263,8 +263,9 @@ img {
 }
 
 .btn-secondary:hover {
-  border-color: var(--color-text-main);
-  background: rgba(255, 255, 255, 0.03);
+  border-color: var(--color-primary);
+  background: rgba(var(--color-primary-rgb), 0.05);
+  color: var(--color-primary);
 }
 
 .btn-sm {
@@ -301,7 +302,7 @@ img {
   font-family: var(--font-serif);
   font-size: 54px;
   line-height: 1.15;
-  color: #fff;
+  color: var(--color-text-main);
   margin-bottom: 24px;
 }
 
@@ -387,7 +388,7 @@ img {
 .section-title {
   font-family: var(--font-serif);
   font-size: 42px;
-  color: #fff;
+  color: var(--color-text-main);
   margin-bottom: 16px;
 }
 
@@ -428,7 +429,7 @@ img {
 .dimension-card .card-title {
   font-size: 18px;
   font-weight: 700;
-  color: #fff;
+  color: var(--color-text-main);
   margin-bottom: 12px;
 }
 
@@ -499,7 +500,7 @@ img {
 .panel-title {
   font-family: var(--font-serif);
   font-size: 26px;
-  color: #fff;
+  color: var(--color-text-main);
 }
 
 .tech-stack-pills {
@@ -526,7 +527,7 @@ img {
   justify-content: space-between;
   align-items: center;
   padding: 24px;
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(255, 255, 255, 0.4);
   border: 1px solid var(--color-border);
   border-radius: 12px;
   transition: var(--transition-fast);
@@ -535,13 +536,13 @@ img {
 }
 
 .project-item:hover {
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.8);
 }
 
 .project-info h5 {
   font-size: 16px;
   font-weight: 700;
-  color: #fff;
+  color: var(--color-text-main);
   margin-bottom: 8px;
 }
 
@@ -575,7 +576,7 @@ img {
 
 .skill-highlight-card {
   padding: 24px;
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(255, 255, 255, 0.4);
   border: 1px solid var(--color-border);
   border-radius: 12px;
 }
@@ -611,7 +612,7 @@ img {
   font-size: 12px;
   font-weight: 600;
   color: var(--color-text-main);
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.6);
   border: 1px solid var(--color-border);
   padding: 6px 14px;
   border-radius: 20px;
@@ -732,7 +733,7 @@ img {
 .timeline-card h4 {
   font-family: var(--font-serif);
   font-size: 20px;
-  color: #fff;
+  color: var(--color-text-main);
   margin-bottom: 4px;
 }
 
@@ -779,7 +780,7 @@ img {
 .hustle-content h3 {
   font-family: var(--font-serif);
   font-size: 32px;
-  color: #fff;
+  color: var(--color-text-main);
   margin-bottom: 16px;
 }
 
@@ -807,7 +808,7 @@ img {
 .hustle-item h6 {
   font-size: 15px;
   font-weight: 700;
-  color: #fff;
+  color: var(--color-text-main);
   margin-bottom: 4px;
 }
 
@@ -905,7 +906,7 @@ img {
   font-size: 13px;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: var(--color-text-main);
+  color: rgba(255, 255, 255, 0.8);
   font-weight: 600;
 }
 
@@ -921,7 +922,7 @@ img {
 .book-details h2 {
   font-family: var(--font-serif);
   font-size: 42px;
-  color: #fff;
+  color: var(--color-text-main);
   margin-bottom: 16px;
 }
 
@@ -1062,7 +1063,7 @@ img {
 .contact-info h3 {
   font-family: var(--font-serif);
   font-size: 32px;
-  color: #fff;
+  color: var(--color-text-main);
   margin-bottom: 16px;
 }
 
@@ -1134,7 +1135,7 @@ img {
 
 .form-group input,
 .form-group textarea {
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(255, 255, 255, 0.8);
   border: 1px solid var(--color-border);
   padding: 14px;
   border-radius: 8px;
@@ -1148,7 +1149,8 @@ img {
 .form-group textarea:focus {
   outline: none;
   border-color: var(--color-primary);
-  background: rgba(255, 255, 255, 0.04);
+  background: #ffffff;
+  box-shadow: 0 0 10px rgba(var(--color-primary-rgb), 0.1);
 }
 
 /* ==========================================
