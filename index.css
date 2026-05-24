@@ -46,6 +46,7 @@ body {
   min-height: 100vh;
   position: relative;
   line-height: 1.6;
+  background-color: var(--bg-deep);
 }
 
 a {
