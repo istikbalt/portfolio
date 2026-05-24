@@ -1,8 +1,0 @@
-# HTTrack Website Copier Cookie File
-# This file format is compatible with Netscape cookies
-istikbalturut.weebly.com	TRUE	/	FALSE	1999999999	is_mobile	0
-.weebly.com	TRUE	/	FALSE	1999999999	__cf_bm	XEIiTEqb8PZoiQIPraI3M2pWsogzeVrPl59.blQPL7Q-1740251259-1.0.1.1-gPwuzik0HsQrR79QNzrtlfZ3lz1JsrJILcv7NsWUdmMFFXSikxjpuXZp6GMOoMAdlKj10C9xsGJg4TREiJROAg
-istikbalturut.weebly.com	TRUE	/	FALSE	1999999999	SameSite	None
-istikbalturut.weebly.com	TRUE	/	FALSE	1999999999	cookie-consent	%7B%22allowStrictlyNecessaryCookies%22%3Atrue%2C%22allowFunctionalityCookies%22%3Atrue%2C%22allowPerformanceCookies%22%3Atrue%2C%22allowTargetingCookies%22%3Atrue%2C%22allowInternalPerformanceCookies%22%3Atrue%7D
-istikbalturut.weebly.com	TRUE	/	FALSE	1999999999	language	en
-
