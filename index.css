@@ -619,6 +619,45 @@ img {
   border-radius: 20px;
 }
 
+/* Educational & Professional Badges Layout */
+.education-badges {
+  display: flex;
+  gap: 16px;
+  margin: 24px 0;
+  flex-wrap: wrap;
+}
+
+.badge-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.5);
+  border: 1px solid var(--color-border);
+  padding: 10px 18px;
+  border-radius: 12px;
+  transition: var(--transition-smooth);
+}
+
+.badge-item:hover {
+  background: rgba(255, 255, 255, 0.9);
+  border-color: rgba(var(--color-primary-rgb), 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.03);
+}
+
+.badge-item img {
+  height: 28px;
+  width: auto;
+  max-width: 60px;
+  object-fit: contain;
+}
+
+.badge-item span {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-text-main);
+}
+
 .poetry-intro p {
   font-size: 15px;
   color: var(--color-text-muted);
