@@ -151,4 +151,30 @@ document.addEventListener('DOMContentLoaded', () => {
     carouselContainer.addEventListener('mouseleave', startAutoplay);
   }
 
+  /* ==========================================
+     SECURE DYNAMIC CONTACT FORM (SPAM-BOT PROTECTED)
+     ========================================== */
+  const contactForm = document.querySelector('.contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      
+      if (!name || !email || !message) return;
+      
+      // Decrypt/Obfuscate email address to protect from crawler spambots
+      const user = "istikbalturut";
+      const domain = "gmail.com";
+      
+      const subject = encodeURIComponent(`Collaboration Inquiry from ${name}`);
+      const body = encodeURIComponent(`Hello Istikbal,\n\nYou received a new message from your portfolio website:\n\nName: ${name}\nSender Email: ${email}\n\nMessage:\n${message}\n\n---`);
+      
+      // Open browser default email client with pre-filled content
+      window.location.href = `mailto:${user}@${domain}?subject=${subject}&body=${body}`;
+    });
+  }
+
 });
