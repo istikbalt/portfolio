@@ -159,11 +159,18 @@ document.addEventListener('DOMContentLoaded', () => {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
       
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+      const originalText = submitBtn.textContent;
+      
       const name = document.getElementById('name').value.trim();
       const email = document.getElementById('email').value.trim();
       const message = document.getElementById('message').value.trim();
       
       if (!name || !email || !message) return;
+      
+      // Update button state for real-time feedback
+      submitBtn.disabled = true;
+      submitBtn.textContent = "Opening Mail Client...";
       
       // Decrypt/Obfuscate email address to protect from crawler spambots
       const user = "istikbalturut";
@@ -172,8 +179,20 @@ document.addEventListener('DOMContentLoaded', () => {
       const subject = encodeURIComponent(`Collaboration Inquiry from ${name}`);
       const body = encodeURIComponent(`Hello Istikbal,\n\nYou received a new message from your portfolio website:\n\nName: ${name}\nSender Email: ${email}\n\nMessage:\n${message}\n\n---`);
       
-      // Open browser default email client with pre-filled content
-      window.location.href = `mailto:${user}@${domain}?subject=${subject}&body=${body}`;
+      // Highly-compatible dynamic link trigger (bypasses popup/redirect blocks)
+      const mailtoLink = document.createElement('a');
+      mailtoLink.href = `mailto:${user}@${domain}?subject=${subject}&body=${body}`;
+      mailtoLink.style.display = 'none';
+      document.body.appendChild(mailtoLink);
+      mailtoLink.click();
+      document.body.removeChild(mailtoLink);
+      
+      // Restore button status and reset form elements gracefully after delay
+      setTimeout(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+        contactForm.reset();
+      }, 1500);
     });
   }
 
