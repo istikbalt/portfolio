@@ -152,7 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ==========================================
-     SECURE DYNAMIC CONTACT FORM (SPAM-BOT PROTECTED)
+     SECURE DYNAMIC CONTACT FORM (WEB3FORMS - BACKGROUND SENDING)
      ========================================== */
   const contactForm = document.querySelector('.contact-form');
   if (contactForm) {
@@ -168,31 +168,77 @@ document.addEventListener('DOMContentLoaded', () => {
       
       if (!name || !email || !message) return;
       
-      // Update button state for real-time feedback
+      // Update button state to sending
       submitBtn.disabled = true;
-      submitBtn.textContent = "Opening Mail Client...";
+      submitBtn.textContent = "Sending Message...";
       
-      // Decrypt/Obfuscate email address to protect from crawler spambots
-      const user = "istikbalturut";
-      const domain = "gmail.com";
+      // Web3Forms Setup - Delivers directly to istikbalturut@gmail.com
+      // You can obtain your free Access Key in 5 seconds at: https://web3forms.com
+      const accessKey = "YOUR_ACCESS_KEY_HERE"; 
       
-      const subject = encodeURIComponent(`Collaboration Inquiry from ${name}`);
-      const body = encodeURIComponent(`Hello Istikbal,\n\nYou received a new message from your portfolio website:\n\nName: ${name}\nSender Email: ${email}\n\nMessage:\n${message}\n\n---`);
+      const formData = {
+        access_key: accessKey,
+        name: name,
+        email: email,
+        message: message,
+        subject: `New Collaboration Message from ${name}`
+      };
       
-      // Highly-compatible dynamic link trigger (bypasses popup/redirect blocks)
-      const mailtoLink = document.createElement('a');
-      mailtoLink.href = `mailto:${user}@${domain}?subject=${subject}&body=${body}`;
-      mailtoLink.style.display = 'none';
-      document.body.appendChild(mailtoLink);
-      mailtoLink.click();
-      document.body.removeChild(mailtoLink);
+      if (accessKey === "YOUR_ACCESS_KEY_HERE" || !accessKey) {
+        // Fallback directly to mailto if no key has been pasted yet
+        triggerMailtoFallback();
+      } else {
+        // Perform background submit to Web3Forms API
+        fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(formData)
+        })
+        .then(async (response) => {
+          if (response.status === 200) {
+            submitBtn.textContent = "✓ Message Sent Successfully!";
+            submitBtn.style.backgroundColor = "#10b981"; // Vibrant Green
+            contactForm.reset();
+          } else {
+            throw new Error("API Key mismatch");
+          }
+        })
+        .catch((error) => {
+          console.warn("Web3Forms error, falling back to mailto client:", error);
+          triggerMailtoFallback();
+        })
+        .finally(() => {
+          setTimeout(() => {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+            submitBtn.style.backgroundColor = ""; // Restore to native css theme
+          }, 3000);
+        });
+      }
       
-      // Restore button status and reset form elements gracefully after delay
-      setTimeout(() => {
-        submitBtn.disabled = false;
-        submitBtn.textContent = originalText;
-        contactForm.reset();
-      }, 1500);
+      function triggerMailtoFallback() {
+        submitBtn.textContent = "Opening Mail Client...";
+        const user = "istikbalturut";
+        const domain = "gmail.com";
+        const subject = encodeURIComponent(`Collaboration Inquiry from ${name}`);
+        const body = encodeURIComponent(`Hello Istikbal,\n\nYou received a new message from your portfolio website:\n\nName: ${name}\nSender Email: ${email}\n\nMessage:\n${message}\n\n---`);
+        
+        const mailtoLink = document.createElement('a');
+        mailtoLink.href = `mailto:${user}@${domain}?subject=${subject}&body=${body}`;
+        mailtoLink.style.display = 'none';
+        document.body.appendChild(mailtoLink);
+        mailtoLink.click();
+        document.body.removeChild(mailtoLink);
+        
+        setTimeout(() => {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
+          contactForm.reset();
+        }, 1500);
+      }
     });
   }
 
